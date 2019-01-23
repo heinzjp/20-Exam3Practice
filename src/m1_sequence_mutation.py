@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Justin Heinz.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 def main():
@@ -37,6 +37,24 @@ def run_test_zero_changer():
     # function.  Try to choose some unexpected things like empty lists
     # or an empty tuple, or a list with no zeros, etc.
     # -------------------------------------------------------------------------
+
+    # Test 2:
+    test2 = ([5, 4, 2, 0, 2], [4, 0, 0, 8, 0, 1, 2, 4], [1, 7, 0, 8, 0])
+    expected2 = ([5, 4, 2, 1, 2], [4, 2, 3, 8, 4, 1, 2, 4], [1, 7, 5, 8, 6])
+    zero_changer(test2)
+    print()
+    print('Test 2:')
+    print('  Expected:', expected2)
+    print('  Actual:  ', test2)
+
+    # Test 1:
+    test3 = ([0, 0, 3, 0, 5], [11, 44, -12, 0, 4], [24, 0, 99, 0])
+    expected3 = ([1, 2, 3, 4, 5], [11, 44, -12, 4, 4], [24, 5, 99, 6])
+    zero_changer(test3)
+    print()
+    print('Test 3:')
+    print('  Expected:', expected3)
+    print('  Actual:  ', test3)
 
 
 def zero_changer(tuple_of_lists):
@@ -72,6 +90,13 @@ def zero_changer(tuple_of_lists):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:  10 minutes.
     # -------------------------------------------------------------------------
+
+    incrementing_zero = 1
+    for k in range(len(tuple_of_lists)):
+        for j in range(len(tuple_of_lists[k])):
+            if tuple_of_lists[k][j] == 0:
+                tuple_of_lists[k][j] = incrementing_zero
+                incrementing_zero = incrementing_zero + 1
 
 
 # -----------------------------------------------------------------------------
