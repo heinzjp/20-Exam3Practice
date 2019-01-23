@@ -6,8 +6,10 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Justin Heinz.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
+
+import math
 
 ###############################################################################
 # Students:
@@ -90,7 +92,7 @@ def hourglass(window, n, point, radius, color):
     a color that rosegraphics understands.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -102,6 +104,38 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # -------------------------------------------------------------------------
+
+    circle = rg.Circle(point, radius)
+    circle_x = circle.center.x
+    circle_y = circle.center.y
+    new_point = rg.Point(circle_x, circle_y)
+    for k in range(n):
+        for j in range(k+1):
+            new_circle = rg.Circle(new_point, radius)
+            new_circle.fill_color = color
+            new_circle.attach_to(window)
+            circle_left = new_circle.center.x - radius
+            circle_right = new_circle.center.x + radius
+            line = rg.Line(rg.Point(circle_left, new_point.y), rg.Point(circle_right, new_point.y))
+            line.attach_to(window)
+            window.render()
+            new_point.x = new_point.x - radius * 2
+        new_point.y = new_point.y + (radius*2)*math.sin(45)
+        new_point.x = circle_x + radius*(j+1)
+    new_point = rg.Point(circle_x, circle_y)
+    for k in range(n):
+        for j in range(k + 1):
+            new_circle = rg.Circle(new_point, radius)
+            new_circle.fill_color = color
+            new_circle.attach_to(window)
+            circle_left = new_circle.center.x - radius
+            circle_right = new_circle.center.x + radius
+            line = rg.Line(rg.Point(circle_left, new_point.y), rg.Point(circle_right, new_point.y))
+            line.attach_to(window)
+            window.render()
+            new_point.x = new_point.x - radius * 2
+        new_point.y = new_point.y - (radius*2)*math.sin(45)
+        new_point.x = circle_x + radius * (j + 1)
 
 
 def run_test_many_hourglasses():
@@ -164,7 +198,7 @@ def many_hourglasses(window, square, m, colors):
     each of which denotes a color that rosegraphics understands.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -180,6 +214,27 @@ def many_hourglasses(window, square, m, colors):
     #                         a correct "hourglass" function above)
     #    TIME ESTIMATE:  20 minutes (warning: this problem is challenging)
     # -------------------------------------------------------------------------
+
+    center = square.center
+    radius = square.length_of_each_side/2
+    diameter = radius*2
+    corner1 = rg.Point(center.x - radius, center.y - radius)
+    corner2 = rg.Point(center.x + radius, center.y + radius)
+    k = 0
+    for n in range(m):
+        if k == len(colors):
+            k = 0
+        color = colors[k]
+        hourglass(window, n + 1, center, radius, color)
+        new_rectangle = rg.Rectangle(corner1, corner2)
+        new_rectangle.attach_to(window)
+        window.render()
+        k = k + 1
+        center.x = center.x + diameter*(n+1) + radius
+        corner1.y = corner1.y - diameter*math.sin(45)
+        corner2.y = corner2.y + diameter*math.sin(45)
+        corner1.x = corner1.x + diameter*(n+1)
+        corner2.x = corner1.x + diameter*(n+2)
 
 
 # -----------------------------------------------------------------------------
