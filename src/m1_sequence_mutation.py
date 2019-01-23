@@ -32,7 +32,7 @@ def run_test_zero_changer():
     print('  Actual:  ', test1)
 
     # -------------------------------------------------------------------------
-    # TODO: 2. Write at least 2 additional tests for the
+    # DONE: 2. Write at least 2 additional tests for the
     #    zero_changer
     # function.  Try to choose some unexpected things like empty lists
     # or an empty tuple, or a list with no zeros, etc.
@@ -82,7 +82,7 @@ def zero_changer(tuple_of_lists):
       :type tuple_of_lists: tuple of list[int]
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
