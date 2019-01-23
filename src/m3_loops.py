@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Justin Heinz.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -46,7 +46,7 @@ def main():
 def run_test_practice_problem3():
     """ Tests the   practice_problem3  function. """
     ###########################################################################
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  practice_problem3  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -136,6 +136,22 @@ def run_test_practice_problem3():
     #             that they are adequate tests!
     ###########################################################################
 
+    # Test 15:
+    test15 = practice_problem3(5, 3, 1.2)
+    expected15 = [7, 13, 20]
+    print()
+    print('Test 15:')
+    print('  Expected:', expected15)
+    print('  Actual:  ', test15)
+
+    # Test 16:
+    test16 = practice_problem3(1000, 5, .5)
+    expected16 = [1000, 1001, 1005, 1006, 1007]
+    print()
+    print('Test 16:')
+    print('  Expected:', expected16)
+    print('  Actual:  ', test16)
+
 
 def practice_problem3(start, n, threshold):
     """
@@ -209,7 +225,7 @@ def practice_problem3(start, n, threshold):
       :type threshold: float
     """
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ###########################################################################
@@ -217,6 +233,18 @@ def practice_problem3(start, n, threshold):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   < 15 minutes.
     ###########################################################################
+
+    incrementing_num = start
+    new_list = []
+    if n == 0:
+        return new_list
+    while True:
+        if math.sin(incrementing_num) + math.cos(incrementing_num) > threshold:
+            new_list = new_list + [incrementing_num]
+        if len(new_list) == n:
+            break
+        incrementing_num = incrementing_num + 1
+    return new_list
 
 
 # -----------------------------------------------------------------------------
